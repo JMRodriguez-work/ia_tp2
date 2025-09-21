@@ -7,6 +7,18 @@ import (
 	"github.com/JMRodriguez-work/ia_tp2/utils"
 )
 
+/*
+	Para la búsqueda A* como es un algoritmo de búsqueda INFORMADO que usa una función heurística para ir al objetivo
+	de manera eficiente
+
+	- Usamos una lista abierta ordenada por f(n) = g(n) + h(n)
+	  - g(n): Costo real desde el inicio hasta el nodo n
+		- h(n): Estimación heurística desde n hasta el objetivo
+		- f(n): Estimación del costo total del camino que pasa por n
+	
+	- Siempre expande al nodo con menor f(n)
+*/
+
 func (r *Robot) AStar(start, target utils.Position, maxSteps int) *utils.Node {
 	openList := []*utils.Node{{Pos: start, Parent: nil, G: 0, H: r.Distance(start, target), F: r.Distance(start, target)}}
 	visited := make(map[string]bool)
